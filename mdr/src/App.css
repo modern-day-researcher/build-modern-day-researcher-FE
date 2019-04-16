@@ -1,0 +1,105 @@
+.App {
+  text-align: center;
+  height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+  background: #162e42;
+  position: fixed;
+  width: 100%;
+  border-bottom: 3px solid #edb948; 
+  height: 20%;
+}
+
+.logo {
+  background: ghostwhite;
+}
+
+.link-wrap {
+  padding: 20px 30px;
+}
+
+a {
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+a:hover {
+  text-decoration: white underline;
+  color: white;
+}
+
+a.link-wrap.activeNavButton {
+  background: #edb948;
+  padding-top: 150px;
+}
+
+.ui.action.input {
+  margin-top: 80px;
+  width: 60%;
+  background: whitesmoke;
+  border-radius: 5px;
+}
+
+/* CATEGORIES */
+
+.input{
+  outline: none;
+  border: none;
+  padding: 5px;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+
+.URLsearch {
+  padding-top: 250px;
+  padding-bottom: 20px;
+}
+
+.ui.icon.input {
+  width: 60%;
+}
+
+i.plus.circle.icon {
+  font-size: 1.4rem;
+}
+
+.cat-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cat-wrap {
+  width: 60%;
+}
+
+.cat-head {
+  margin: 20px;
+  margin-top: 20px;
+  color: #edb948;
+  font-size: 3rem;
+}
+
+.cat {
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.64);
+  padding: 2%;
+  background: #162e42;
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  font-weight: bold;
+  margin: 30px;
+}
+
+.cat:hover {
+  cursor: pointer;
+  box-shadow: 15px 15px 5px 0px rgba(0,0,0,0.75);
+}
