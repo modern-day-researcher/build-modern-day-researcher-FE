@@ -8,7 +8,7 @@ import reducer from './reducers';
 import App from './App';
 
 const store = createStore(reducer, applyMiddleware(thunk));
-window.reduxStore = store;
+
 const rootElement = document.getElementById('root');
 ReactDOM.render(
   <Provider store={store}>

@@ -1,6 +1,5 @@
 import React from 'react';
-import Input from './Input';
-import Categories from './Categories';
+import Input from './Categories';
 
 
 class Home extends React.Component {
@@ -8,7 +7,7 @@ class Home extends React.Component {
         return (
             <div>
                 <Input />
-                <Categories />
+                {/* <Categories /> */}
             </div>
         )
     }

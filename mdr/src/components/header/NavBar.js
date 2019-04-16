@@ -11,6 +11,8 @@ const NavBar = () => {
             <div className='navbar'>
                 <img src={Logo} className='logo' alt='r.ticle logo'/>
                     <NavLink exact to='/' className='link-wrap' activeClassName='activeNavButton' >Home</NavLink>
+
+                    <NavLink exact to='/all' className='link-wrap' activeClassName='activeNavButton' >All</NavLink>
           
                 
                     <NavLink to='/politics' className='link-wrap' activeClassName='activeNavButton' >Politics</NavLink>
@@ -37,15 +39,15 @@ const NavBar = () => {
                     <NavLink to='/video' className='link-wrap' activeClassName='activeNavButton' >Videos</NavLink>
          
             </div>
-            <div class="ui action input">
+            {/* <div className="ui action input">
                 <input type="text" placeholder="Search..." />
                 <select className="ui compact selection dropdown">
                     <option value="all">All</option>
                     <option selected="" value="articles">Articles</option>
                     <option value="products">Products</option>
                 </select>
-                <div className="ui button">Search</div>
-            </div>
+                <button className="ui button">Search</button>
+            </div> */}
         </section>
     )
 }
