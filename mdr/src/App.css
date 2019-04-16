@@ -3,6 +3,8 @@
   height: 100vh;
 }
 
+/* NAVBAR */
+
 .navbar {
   display: flex;
   justify-content: space-evenly;
@@ -10,11 +12,14 @@
   position: fixed;
   width: 100%;
   border-bottom: 3px solid #edb948; 
-  height: 20%;
+  height: 10%;
+  z-index: 999;
 }
 
 .logo {
   background: ghostwhite;
+  border-radius: 5px;
+  height: 94px;
 }
 
 .link-wrap {
@@ -22,27 +27,82 @@
 }
 
 a {
-  color: white;
   font-weight: 600;
   text-decoration: none;
   font-size: 1.1rem;
 }
 
-a:hover {
+a.link-wrap:hover {
   text-decoration: white underline;
   color: white;
 }
 
 a.link-wrap.activeNavButton {
   background: #edb948;
-  padding-top: 150px;
+  padding-top: 76px;
 }
 
 .ui.action.input {
   margin-top: 80px;
-  width: 60%;
   background: whitesmoke;
   border-radius: 5px;
+  position: fixed;
+  width: 45%;
+  z-index: 1000;
+}
+
+.sign {
+  height: min-content;
+  margin-top: 30px;
+  padding: 10px;
+  border-radius: 5px;
+  border: #f69826;
+  background: #edb948;
+}
+
+.sign:hover {
+  cursor: pointer;
+}
+
+/* SIGNIN */
+
+.form-wrap {
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.form-wrap form {
+  height: 300px;
+  margin-top: 200px;
+  border: 5px solid #edb948;
+  width: 40%;
+  border-radius: 5px;
+}
+
+.in {
+  padding-top: 10px;
+  border-radius: 5px;
+  border: 2px solid #162e42;
+}
+
+
+/* INPUTS */
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 250px;
+  justify-content: space-evenly;
+}
+
+.cat-input {
+  width: 60%;
+  padding-top: 10px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: 1px solid #162e42;
 }
 
 /* CATEGORIES */
@@ -59,16 +119,12 @@ button {
 }
 
 .URLsearch {
-  padding-top: 250px;
+  padding-top: 140px;
   padding-bottom: 20px;
 }
 
 .ui.icon.input {
   width: 60%;
-}
-
-i.plus.circle.icon {
-  font-size: 1.4rem;
 }
 
 .cat-flex {
@@ -102,4 +158,31 @@ i.plus.circle.icon {
 .cat:hover {
   cursor: pointer;
   box-shadow: 15px 15px 5px 0px rgba(0,0,0,0.75);
+}
+
+.cat:focus {
+  background: #edb948;
+  color: #162e42;
+}
+
+.sumbitURL {
+  background: #edb948;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.sumbitURL:hover {
+  cursor: pointer;
+}
+
+/* ALL TAB */
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 140px;
+}
+
+.wrap a {
+  margin: 20px;
 }
