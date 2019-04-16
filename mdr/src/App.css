@@ -27,7 +27,6 @@
 }
 
 a {
-  color: white;
   font-weight: 600;
   text-decoration: none;
   font-size: 1.1rem;
@@ -52,6 +51,42 @@ a.link-wrap.activeNavButton {
   z-index: 1000;
 }
 
+.sign {
+  height: min-content;
+  margin-top: 30px;
+  padding: 10px;
+  border-radius: 5px;
+  border: #f69826;
+  background: #edb948;
+}
+
+.sign:hover {
+  cursor: pointer;
+}
+
+/* SIGNIN */
+
+.form-wrap {
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.form-wrap form {
+  height: 300px;
+  margin-top: 200px;
+  border: 5px solid #edb948;
+  width: 40%;
+  border-radius: 5px;
+}
+
+.in {
+  padding-top: 10px;
+  border-radius: 5px;
+  border: 2px solid #162e42;
+}
+
+
 /* INPUTS */
 
 form {
@@ -62,12 +97,12 @@ form {
   justify-content: space-evenly;
 }
 
-input {
+.cat-input {
   width: 60%;
   padding-top: 10px;
   font-size: 1.2rem;
   border-radius: 5px;
-  border: 1px solid navy;
+  border: 1px solid #162e42;
 }
 
 /* CATEGORIES */
@@ -84,7 +119,7 @@ button {
 }
 
 .URLsearch {
-  padding-top: 200px;
+  padding-top: 140px;
   padding-bottom: 20px;
 }
 

@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 // Add new user 
 export const SIGN_UP = 'SIGN_UP';
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
@@ -23,13 +24,12 @@ export const SIGN_IN = 'SIGN_IN';
 export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
 export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE'
 
-export const toggleSignedIn = userInfo => dispatch => {
+export const login = userInfo => dispatch => {
   dispatch({ type: SIGN_IN})
   axios.post('', userInfo)
   .then(res => {
     dispatch({ type: SIGN_IN_SUCCESS, payload: res.data.token})
-    localStorage.setItem('jwt', res.data.token);
-    localStorage.setItem('userID', res.data.userId);
+    localStorage.setItem('token', res.data.token);
   })
   .catch(err => {
     dispatch({ type: SIGN_IN_FAILURE, payload: err.message})
@@ -55,8 +55,8 @@ export const getLinks = () => dispatch => {
   })
 }
 
-// Request a specific category
-// Should I get links or categories
+// // Request a specific category
+// // Should I get links or categories
 export const GET_LINK = "GET_LINK";
 export const GET_LINK_SUCCESS = "GET_LINK_SUCCESS";
 export const GET_LINK_FAILURE = "GET_LINK_FAILURE";
@@ -82,9 +82,9 @@ export const ADD_LINK = "ADD_LINK";
 export const ADD_LINK_SUCCESS = "ADD_LINK_SUCCESS";
 export const ADD_LINK_FAILURE = "ADD_LINK_FAILURE";
 
-export const addLink = link => dispatch => {
+export const addLink = url => dispatch => {
   dispatch({ type: ADD_LINK })
-  axios.post('', link)
+  axios.post(``, url)
   .then(res => {
     console.log(res);
     dispatch({ type: ADD_LINK_SUCCESS, payload: res.data.data })
@@ -100,7 +100,7 @@ export const DELETE_LINK = "DELETE_LINK";
 export const DELETE_LINK_SUCCESS = "DELETE_LINK_SUCCESS";
 export const DELETE_LINK_FAILURE = "DELETE_LINK_FAILURE";
 
-export const deleteLink = id => dispatch => {
+export const deleteLink = () => dispatch => {
   dispatch({ type: DELETE_LINK })
   axios.delete('')
   .then(res => {

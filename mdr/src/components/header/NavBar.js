@@ -37,6 +37,9 @@ const NavBar = () => {
            
                 
                     <NavLink to='/video' className='link-wrap' activeClassName='activeNavButton' >Videos</NavLink>
+
+                    <NavLink to='/sign_in' className='sign'>Sign In</NavLink>
+                    <NavLink to='/sign_in' className='sign'>Log Out</NavLink>
          
             </div>
             {/* <div className="ui action input">

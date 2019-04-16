@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import MicrolinkCard from '@microlink/react';
+import MicrolinkCard from '@microlink/react';
 import '../../App.css'
 
 export class Input extends Component {
@@ -112,6 +112,7 @@ export class Input extends Component {
     return (
         <div>
             <div className='URLsearch'>
+              <h1 className='cat-head'>Step One: Add A Url</h1>
                 <form onSubmit={this.submitHandler}>
                     <label>Please enter a URL!</label>
                     <input
@@ -119,15 +120,18 @@ export class Input extends Component {
                         value={this.state.url}
                         placeholder='Add  A  URL . . .'
                         onChange={this.handleURLChange}
+                        className='cat-input'
                     >
                     
                     </input>
+                    <h1 className='cat-head'>Step Two: Who's profile are we adding this to? </h1>
                     <label>This can be your username or the username of a friend.</label>
                     <input
                         name='username'
                         value={this.state.username}
                         placeholder='Add  A Username . . .'
                         onChange={this.handleUserChange}
+                        className='cat-input'
                     >
                     
                     </input>
