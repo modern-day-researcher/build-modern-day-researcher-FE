@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-import MicrolinkCard from '@microlink/react';
+// import MicrolinkCard from '@microlink/react';
 import '../../App.css'
 
 export class Input extends Component {
-    constructor() {
-        super();
-        this.state = {
+    state = {
+        link: {
             url: '',
             category: '',
             username: '',
-            completed: false
+            completed: false      
         }
     }
+    //  const {link} = this.state;
+
+
+    
 
     submitHandler = () => {
         // event.preventDefault();
@@ -21,7 +24,7 @@ export class Input extends Component {
         //     username: this.state.username,
         //     completed: false
         //  }
-        //   this.props.addLink(newLink);
+
           this.setState({
             url: '',
             category: '',

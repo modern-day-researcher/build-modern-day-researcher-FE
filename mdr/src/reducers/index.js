@@ -1,7 +1,11 @@
+import React from 'react';
 import { SIGN_UP, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAILURE, GET_LINKS,GET_LINKS_SUCCESS, GET_LINKS_FAILURE, GET_LINK, GET_LINK_SUCCESS, GET_LINK_FAILURE, ADD_LINK, ADD_LINK_SUCCESS, ADD_LINK_FAILURE, DELETE_LINK, DELETE_LINK_SUCCESS, DELETE_LINK_FAILURE } from '../actions';
+import MicrolinkCard from '@microlink/react';
 
 const initialState = {
     links: [],
+    signingUp: false,
+    signedUp: false,
     signingIn: false,
     signedIn: false,
     currentUser: null,
@@ -17,19 +21,20 @@ const reducer = (state = initialState, action)  => {
         case SIGN_UP:
         return {
             ...state,
-            signingIn: true,
+            signingUp: true,
+            signedIn: false
         }
         case SIGN_UP_SUCCESS:
         return {
             ...state,
-            signingIn: false,
+            signingUp: true,
             signedIn: true
         }
         case SIGN_UP_FAILURE:
         return {
             ...state,
-            signingIn: false,
-            signedIn: false,
+            signingUp: false,
+            signedUp: false,
             error: action.payload
         }
         case SIGN_IN:
@@ -87,6 +92,7 @@ const reducer = (state = initialState, action)  => {
         case ADD_LINK:
         return {
             ...state,
+            link: <MicrolinkCard />,
             addingLink: true
         }
         case ADD_LINK_SUCCESS:
