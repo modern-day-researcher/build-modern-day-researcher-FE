@@ -20,6 +20,16 @@ class App extends Component {
           <NavBar />  
           <PrivateRoute exact path='/' component={Home}/>
           <PrivateRoute path='/all' component={All} />
+          <PrivateRoute path='/politics' />
+          <PrivateRoute path='/animals' />
+          <PrivateRoute path='/tech' />
+          <PrivateRoute path='/health' />
+          <PrivateRoute path='/business' />
+          <PrivateRoute path='/food' />
+          <PrivateRoute path='/art' />
+          <PrivateRoute path='/sports' />
+          <PrivateRoute path='/videos' />
+          <PrivateRoute path='/entertainment' />
           <Route path='/sign-in' component={LoginForm} />
           <Route path='/sign-up' component={SignUp} />
           </div>

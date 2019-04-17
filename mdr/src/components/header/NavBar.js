@@ -25,6 +25,9 @@ class NavBar extends React.Component {
             
                 
                     <NavLink to='/politics' className='link-wrap' activeClassName='activeNavButton' >Politics</NavLink>
+
+
+                    <NavLink to='/amimals' className='link-wrap' activeClassName='activeNavButton' >Animals</NavLink>
             
                 
                     <NavLink to='/tech' className='link-wrap' activeClassName='activeNavButton' >Tech</NavLink>
