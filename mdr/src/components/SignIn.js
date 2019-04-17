@@ -18,9 +18,9 @@ class LoginForm extends Component {
     this.props.checkSignIn();
   }
 
-  // signIn = () => {
-  //   this.props.history.push("/");
-  // };
+  signIn = () => {
+    this.props.history.push("/");
+  };
 
   changeHandler = event => {
     event.preventDefault();
@@ -32,10 +32,10 @@ class LoginForm extends Component {
     });
   };
 
-  submitDataHandler = (event) => {
+  submitDataHandler = event => {
     event.preventDefault();
     this.props.login(this.state.userInfo);
-    this.props.history.push("/");
+    // this.props.history.push("/");
     this.setState({
       userInfo: {
         username: "",
@@ -71,7 +71,7 @@ class LoginForm extends Component {
             placeholder="Password"
             onChange={this.changeHandler}
           />
-          <button type='submit' onSubmit={this.submitDataHandler} className='actButton' >Log In!</button>
+          <button type='submit' onClick={this.signIn} className='actButton' >Log In!</button>
           <p>
             Sign in below to access your dashboard. Don't have an account yet?
             <br></br>

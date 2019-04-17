@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   height: 100vh;
+  font-family: 'Rubik', sans-serif;
 }
 
 /* NAVBAR */
@@ -153,6 +154,7 @@ button {
   margin-top: 20px;
   color: #edb948;
   font-size: 3rem;
+  font-family: 'Rubik', sans-serif;
 }
 
 .cat {

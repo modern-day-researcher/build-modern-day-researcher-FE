@@ -6,6 +6,7 @@ import PrivateRoute from './components/PrivateRoute';
 import NavBar from './components/header/NavBar';
 import Home from './components/home/Home';
 import All from './components/All';
+import URL from './components/URL';
 import LoginForm from './components/SignIn';
 import SignUp from './components/SignUp';
 
@@ -20,16 +21,16 @@ class App extends Component {
           <NavBar />  
           <PrivateRoute exact path='/' component={Home}/>
           <PrivateRoute path='/all' component={All} />
-          <PrivateRoute path='/politics' />
-          <PrivateRoute path='/animals' />
-          <PrivateRoute path='/tech' />
-          <PrivateRoute path='/health' />
-          <PrivateRoute path='/business' />
-          <PrivateRoute path='/food' />
-          <PrivateRoute path='/art' />
-          <PrivateRoute path='/sports' />
-          <PrivateRoute path='/videos' />
-          <PrivateRoute path='/entertainment' />
+          <PrivateRoute path='/politics' component={URL} />
+          <PrivateRoute path='/animals' component={URL} />
+          <PrivateRoute path='/tech'  component={URL} />
+          <PrivateRoute path='/health' component={URL} />
+          <PrivateRoute path='/business' component={URL} />
+          <PrivateRoute path='/food' component={URL} />
+          <PrivateRoute path='/art' component={URL} />
+          <PrivateRoute path='/sports' component={URL} />
+          <PrivateRoute path='/videos' component={URL} />
+          <PrivateRoute path='/entertainment' component={URL} />
           <Route path='/sign-in' component={LoginForm} />
           <Route path='/sign-up' component={SignUp} />
           </div>
