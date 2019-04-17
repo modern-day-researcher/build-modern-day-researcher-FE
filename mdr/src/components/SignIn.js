@@ -1,50 +1,89 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { checkSignIn } from '../actions';
 import { login } from '../actions';
 import '../App.css';
 
 
 class LoginForm extends Component {
   state = {
-    credentials: {
-      email: '',
+    userInfo: {
+      username: '',
       password: ''
     }
   }
 
+  componentDidMount() {
+    this.props.checkSignIn();
+  }
+
+  signIn = () => {
+    this.props.history.push("/");
+  };
+
+  changeHandler = event => {
+    event.preventDefault();
+    this.setState({
+      userInfo: {
+        ...this.state.userInfo,
+        [event.target.name]: event.target.value
+      }
+    });
+  };
+
+  submitDataHandler = event => {
+    event.preventDefault();
+    this.props.login(this.state.userInfo);
+    // this.props.history.push("/");
+    this.setState({
+      userInfo: {
+        username: "",
+        password: ""
+      }
+    });
+  };
+
   render() {
     return (
       <div className="form-wrap">
-        <form>
+        <form onSubmit={this.submitDataHandler}>
           <div className="sign-header">
             <h3 className='cat-head'>Sign In</h3>
-            <p>
-              Sign in below to access your dashboard. Don't have an account yet?{' '}
-              <Link to="/">Create one here.</Link>
-            </p>
           </div>
-          <label htmlFor="email">Email</label>
+          <label>Username</label>
           <input
-            id="email"
+            id="username"
             type="text"
-            name="email"
+            name="username"
+            value={this.state.userInfo.username}
             className='in user'
-            placeholder="Email Address"
+            placeholder="Username"
+            onChange={this.changeHandler}
           />
           <label htmlFor="password">Password</label>
           <input
             id="password"
             type="password"
             name="password"
+            value={this.state.userInfo.password}
             className='in pass'
             placeholder="Password"
+            onChange={this.changeHandler}
           />
-          <button >Log In</button>
+          <button type='submit' onClick={this.signIn} className='actButton' >Log In!</button>
+          <p>
+            Sign in below to access your dashboard. Don't have an account yet?
+            <br></br>
+            <Link to="/sign-up">Create one here.</Link>
+          </p>
         </form>
         <div />
       </div>
     )
   }
 }
-export default LoginForm;
+export default connect(
+  null,
+  { login, checkSignIn }
+)(LoginForm)

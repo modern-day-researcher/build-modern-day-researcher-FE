@@ -1,17 +1,17 @@
 import axios from 'axios';
 
-
 // Add new user 
 export const SIGN_UP = 'SIGN_UP';
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE'
 
 export const signUp = userInfo => dispatch => {
+    console.log(userInfo)
   dispatch({ type: SIGN_UP})
-  axios.post('', userInfo)
+  axios.post('https://rticle.herokuapp.com/api/auth/register', userInfo)
   .then(res => {
-    dispatch({ type: SIGN_UP_SUCCESS, payload: res.data.token})
-    //set item
+    dispatch({ type: SIGN_UP_SUCCESS })
+    console.log(res);
   })
   .catch(err => {
     dispatch({ type: SIGN_UP_FAILURE, payload: err.message})
@@ -22,11 +22,11 @@ export const signUp = userInfo => dispatch => {
 // Sign In 
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
-export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE'
+export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE';
 
 export const login = userInfo => dispatch => {
   dispatch({ type: SIGN_IN})
-  axios.post('', userInfo)
+  axios.post('https://rticle.herokuapp.com/api/auth/login', userInfo)
   .then(res => {
     dispatch({ type: SIGN_IN_SUCCESS, payload: res.data.token})
     localStorage.setItem('token', res.data.token);
@@ -36,6 +36,15 @@ export const login = userInfo => dispatch => {
   })
 }
 
+export const SIGNED_IN = "SIGNED_IN";
+export const SIGNED_OUT = "SIGNED_OUT";
+
+export const checkSignIn = () => {
+  if (localStorage.getItem('token')) {
+    return {type: SIGNED_IN }
+  }
+  return {type: SIGNED_OUT}
+}
 
 // Request shared link page
 export const GET_LINKS = "GET_LINKS";
@@ -56,7 +65,6 @@ export const getLinks = () => dispatch => {
 }
 
 // // Request a specific category
-// // Should I get links or categories
 export const GET_LINK = "GET_LINK";
 export const GET_LINK_SUCCESS = "GET_LINK_SUCCESS";
 export const GET_LINK_FAILURE = "GET_LINK_FAILURE";
@@ -82,9 +90,9 @@ export const ADD_LINK = "ADD_LINK";
 export const ADD_LINK_SUCCESS = "ADD_LINK_SUCCESS";
 export const ADD_LINK_FAILURE = "ADD_LINK_FAILURE";
 
-export const addLink = url => dispatch => {
+export const addLink = link => dispatch => {
   dispatch({ type: ADD_LINK })
-  axios.post(``, url)
+  axios.post(``, link)
   .then(res => {
     console.log(res);
     dispatch({ type: ADD_LINK_SUCCESS, payload: res.data.data })
@@ -113,3 +121,14 @@ export const deleteLink = () => dispatch => {
   })
 }
 
+//LOGOUT
+export const LOGOUT = 'LOGOUT'
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
+
+export const logout = () => dispatch => {
+  dispatch({ type: LOGOUT })
+  localStorage.removeItem('token')
+  localStorage.removeItem('data')
+  dispatch({ type: LOGOUT_SUCCESS })
+  window.location.reload()
+}
