@@ -22,21 +22,29 @@ export const signUp = userInfo => dispatch => {
 // Sign In 
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
-export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE'
+export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE';
 
 export const login = userInfo => dispatch => {
   dispatch({ type: SIGN_IN})
   axios.post('https://rticle.herokuapp.com/api/auth/login', userInfo)
   .then(res => {
     dispatch({ type: SIGN_IN_SUCCESS, payload: res.data.token})
-    localStorage.getItem('token', res.data.token);
-    localStorage.getItem('username', res.data.username);
+    localStorage.setItem('token', res.data.token);
   })
   .catch(err => {
     dispatch({ type: SIGN_IN_FAILURE, payload: err.message})
   })
 }
 
+export const SIGNED_IN = "SIGNED_IN";
+export const SIGNED_OUT = "SIGNED_OUT";
+
+export const checkSignIn = () => {
+  if (localStorage.getItem('token')) {
+    return {type: SIGNED_IN }
+  }
+  return {type: SIGNED_OUT}
+}
 
 // Request shared link page
 export const GET_LINKS = "GET_LINKS";
@@ -113,3 +121,14 @@ export const deleteLink = () => dispatch => {
   })
 }
 
+//LOGOUT
+export const LOGOUT = 'LOGOUT'
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
+
+export const logout = () => dispatch => {
+  dispatch({ type: LOGOUT })
+  localStorage.removeItem('token')
+  localStorage.removeItem('data')
+  dispatch({ type: LOGOUT_SUCCESS })
+  window.location.reload()
+}

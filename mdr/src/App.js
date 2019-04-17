@@ -19,7 +19,7 @@ class App extends Component {
           <div className='App'>
           <NavBar />  
           <PrivateRoute exact path='/' component={Home}/>
-          <PrivateRoute path='/all' render={() => <All />} />
+          <PrivateRoute path='/all' component={All} />
           <Route path='/sign-in' component={LoginForm} />
           <Route path='/sign-up' component={SignUp} />
           </div>

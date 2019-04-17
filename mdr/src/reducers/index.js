@@ -1,5 +1,5 @@
 import React from 'react';
-import { SIGN_UP, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAILURE, GET_LINKS,GET_LINKS_SUCCESS, GET_LINKS_FAILURE, GET_LINK, GET_LINK_SUCCESS, GET_LINK_FAILURE, ADD_LINK, ADD_LINK_SUCCESS, ADD_LINK_FAILURE, DELETE_LINK, DELETE_LINK_SUCCESS, DELETE_LINK_FAILURE } from '../actions';
+import { SIGN_UP, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAILURE, SIGNED_IN, SIGNED_OUT, GET_LINKS,GET_LINKS_SUCCESS, GET_LINKS_FAILURE, GET_LINK, GET_LINK_SUCCESS, GET_LINK_FAILURE, ADD_LINK, ADD_LINK_SUCCESS, ADD_LINK_FAILURE, DELETE_LINK, DELETE_LINK_SUCCESS, DELETE_LINK_FAILURE } from '../actions';
 import MicrolinkCard from '@microlink/react';
 
 const initialState = {
@@ -54,6 +54,16 @@ const reducer = (state = initialState, action)  => {
             signingIn: false,
             signedIn: false,
             error: action.payload
+        }
+        case SIGNED_IN:
+        return {
+          ...state,
+          signedIn: true
+        }
+        case SIGNED_OUT:
+        return {
+          ...state,
+          signedIn: false
         }
         case GET_LINKS:
         return {
