@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { checkSignIn } from '../actions';
+
 import { login } from '../actions';
 import '../App.css';
 
@@ -14,13 +14,6 @@ class LoginForm extends Component {
     }
   }
 
-  componentDidMount() {
-    this.props.checkSignIn();
-  }
-
-  signIn = () => {
-    this.props.history.push("/");
-  };
 
   changeHandler = event => {
     event.preventDefault();
@@ -34,20 +27,13 @@ class LoginForm extends Component {
 
   submitDataHandler = event => {
     event.preventDefault();
-    this.props.login(this.state.userInfo);
-    // this.props.history.push("/");
-    this.setState({
-      userInfo: {
-        username: "",
-        password: ""
-      }
-    });
+    this.props.login(this.state.userInfo).then(() => this.props.history.push("/")) 
   };
 
   render() {
     return (
       <div className="form-wrap">
-        <form onSubmit={this.submitDataHandler}>
+        <form className='login' onSubmit={this.submitDataHandler}>
           <div className="sign-header">
             <h3 className='cat-head'>Sign In</h3>
           </div>
@@ -71,7 +57,7 @@ class LoginForm extends Component {
             placeholder="Password"
             onChange={this.changeHandler}
           />
-          <button type='submit' onClick={this.signIn} className='actButton' >Log In!</button>
+          <button type='submit' className='actButton' >Log In!</button>
           <p>
             Sign in below to access your dashboard. Don't have an account yet?
             <br></br>
@@ -85,5 +71,5 @@ class LoginForm extends Component {
 }
 export default connect(
   null,
-  { login, checkSignIn }
+  { login }
 )(LoginForm)

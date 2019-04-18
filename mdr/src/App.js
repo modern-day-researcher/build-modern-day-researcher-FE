@@ -9,6 +9,7 @@ import All from './components/All';
 import URL from './components/URL';
 import LoginForm from './components/SignIn';
 import SignUp from './components/SignUp';
+import Footer from './components/header/Footer';
 
 import './App.css';
 
@@ -33,6 +34,7 @@ class App extends Component {
           <PrivateRoute path='/entertainment' component={URL} />
           <Route path='/sign-in' component={LoginForm} />
           <Route path='/sign-up' component={SignUp} />
+          <Footer />
           </div>
         </Router>
       </div>

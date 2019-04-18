@@ -8,9 +8,10 @@ export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE'
 export const signUp = userInfo => dispatch => {
     console.log(userInfo)
   dispatch({ type: SIGN_UP})
-  axios.post('https://rticle.herokuapp.com/api/auth/register', userInfo)
+  return axios.post('https://rticle.herokuapp.com/api/auth/register', userInfo)
   .then(res => {
-    dispatch({ type: SIGN_UP_SUCCESS })
+    dispatch({ type: SIGN_UP_SUCCESS, payload: res.data.token})
+    localStorage.setItem('token', res.data.token);
     console.log(res);
   })
   .catch(err => {
@@ -26,10 +27,11 @@ export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE';
 
 export const login = userInfo => dispatch => {
   dispatch({ type: SIGN_IN})
-  axios.post('https://rticle.herokuapp.com/api/auth/login', userInfo)
+  return axios.post('https://rticle.herokuapp.com/api/auth/login', userInfo)
   .then(res => {
     dispatch({ type: SIGN_IN_SUCCESS, payload: res.data.token})
     localStorage.setItem('token', res.data.token);
+    localStorage.setItem('user_id', res.data.user_id);
   })
   .catch(err => {
     dispatch({ type: SIGN_IN_FAILURE, payload: err.message})
@@ -51,9 +53,9 @@ export const GET_LINKS = "GET_LINKS";
 export const GET_LINKS_SUCCESS = "GET_LINKS_SUCCESS";
 export const GET_LINKS_FAILURE = "GET_LINKS_FAILURE";
 
-export const getLinks = () => dispatch => {
+export const getLinks = id => dispatch => {
   dispatch({ type: GET_LINKS})
-  axios.get('')
+  axios.get(`https://rticle.herokuapp.com/api/${id}`)
   .then(res => {
     console.log(res);
     dispatch({ type: GET_LINKS_SUCCESS, payload: res.data.data })
@@ -92,7 +94,7 @@ export const ADD_LINK_FAILURE = "ADD_LINK_FAILURE";
 
 export const addLink = link => dispatch => {
   dispatch({ type: ADD_LINK })
-  axios.post(``, link)
+  return axios.post('https://rticle.herokuapp.com/api/user/articles', link)
   .then(res => {
     console.log(res);
     dispatch({ type: ADD_LINK_SUCCESS, payload: res.data.data })

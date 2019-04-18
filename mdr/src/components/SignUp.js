@@ -23,23 +23,18 @@ class SignUp extends Component {
         });
     };
     
-    submitDataHandler = (event) => {
+    submitDataHandler = event => {
         event.preventDefault();
-        this.props.signUp(this.state.userInfo);
-        this.setState({
-            userInfo: {
-            username: "",
-            password: ""
-            }
-        });
+        this.props.signUp(this.state.userInfo).then(() => this.props.history.push('/') )
     };
 
     render () {
         return (
             <div className="form-wrap">
+            <h1>Welcome to R.ticle!</h1>
             <form onSubmit={this.submitDataHandler}>
               <div className="sign-header">
-                <h3 className='cat-head'>R.ticle</h3>
+                <h3 className='cat-head'>Register</h3>
                 <p>Sign up below to access your new account!</p>
               </div>
               <label>Username</label>
