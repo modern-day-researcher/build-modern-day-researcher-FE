@@ -14,13 +14,13 @@ class LoginForm extends Component {
     }
   }
 
-  componentDidMount() {
-    this.props.checkSignIn();
-  }
+  // componentDidMount() {
+  //   this.props.checkSignIn();
+  // }
 
-  signIn = () => {
-    this.props.history.push("/");
-  };
+  // signIn = () => {
+  //   this.props.history.push("/");
+  // };
 
   changeHandler = event => {
     event.preventDefault();
@@ -34,14 +34,7 @@ class LoginForm extends Component {
 
   submitDataHandler = event => {
     event.preventDefault();
-    this.props.login(this.state.userInfo);
-    // this.props.history.push("/");
-    this.setState({
-      userInfo: {
-        username: "",
-        password: ""
-      }
-    });
+    this.props.login(this.state.userInfo).then(() => this.props.history.push("/")) 
   };
 
   render() {
@@ -71,7 +64,7 @@ class LoginForm extends Component {
             placeholder="Password"
             onChange={this.changeHandler}
           />
-          <button type='submit' onClick={this.signIn} className='actButton' >Log In!</button>
+          <button type='submit' className='actButton' >Log In!</button>
           <p>
             Sign in below to access your dashboard. Don't have an account yet?
             <br></br>

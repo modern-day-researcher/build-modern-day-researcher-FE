@@ -26,7 +26,7 @@ export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE';
 
 export const login = userInfo => dispatch => {
   dispatch({ type: SIGN_IN})
-  axios.post('https://rticle.herokuapp.com/api/auth/login', userInfo)
+  return axios.post('https://rticle.herokuapp.com/api/auth/login', userInfo)
   .then(res => {
     dispatch({ type: SIGN_IN_SUCCESS, payload: res.data.token})
     localStorage.setItem('token', res.data.token);
