@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-// import MicrolinkCard from '@microlink/react';
+import Card from '../Card';
+import { connect } from 'react-redux';
+import { addLink } from '../../actions';
 import '../../App.css'
 
 export class Input extends Component {
@@ -7,24 +9,15 @@ export class Input extends Component {
         link: {
             url: '',
             category: '',
-            username: '',
-            completed: false      
+            user_id: '',
+            is_read: false      
         }
     }
     //  const {link} = this.state;
 
-
-    
-
     submitHandler = () => {
-        // event.preventDefault();
-        // const newLink = {
-        //     url: this.state.url,
-        //     category: this.state.category,
-        //     username: this.state.username,
-        //     completed: false
-        //  }
-
+         this.props.addLink(this.state.link)
+        //  .then (() => this.props.history.push(`/${this.state.link.category}`))
           this.setState({
             url: '',
             category: '',
@@ -44,83 +37,83 @@ export class Input extends Component {
     clickHealth = event => {
         event.preventDefault();
         this.setState({
-            category: 'health'
+        category: 'health'
         })
     }
 
     clickPolitics = event => {
         event.preventDefault();
         this.setState({
-            category: 'politics'
+        category: 'politics'
         })
     }
 
     clickSports = event => {
         event.preventDefault();
         this.setState({
-            category: 'sports'
+        category: 'sports'
         })
     }
 
     clickBusiness = event => {
         event.preventDefault();
         this.setState({
-            category: 'business'
+        category: 'business'
         })
     }
 
     clickArt = event => {
         event.preventDefault();
         this.setState({
-            category: 'art'
+        category: 'art'
         })
     }
 
     clickTech = event => {
         event.preventDefault();
         this.setState({
-            category: 'tech'
+        category: 'tech'
         })
     }
 
     clickFood = event => {
         event.preventDefault();
         this.setState({
-            category: 'food'
+        category: 'food'
         })
     }
 
     clickMusic = event => {
         event.preventDefault();
         this.setState({
-            category: 'music'
+        category: 'music'
         })
     }
 
     clickVideos = event => {
         event.preventDefault();
         this.setState({
-            category: 'videos'
+        category: 'videos'
         })
     }
 
     clickEntertainment = event => {
         event.preventDefault();
         this.setState({
-            category: 'entertainment'
+        category: 'entertainment'
         })
     }
 
-  render() {
+  render () {
     return (
-        <div>
+        <div className='all-page'>
             <div className='URLsearch'>
               <h1 className='cat-head'>Step One: Add A Url</h1>
                 <form onSubmit={this.submitHandler}>
                     <label>Please enter a URL!</label>
                     <input
                         name='url'
-                        value={this.state.url}
+                        value={this.state.link.url}
                         placeholder='Add  A  URL . . .'
                         onChange={this.handleURLChange}
                         className='cat-input'
@@ -131,7 +124,7 @@ export class Input extends Component {
                     <label>This can be your username or the username of a friend.</label>
                     <input
                         name='username'
-                        value={this.state.username}
+                        value={this.state.link.username}
                         placeholder='Add  A Username . . .'
                         onChange={this.handleUserChange}
                         className='cat-input'
@@ -141,7 +134,7 @@ export class Input extends Component {
                 </form>
             </div>
                <div className='cat-flex'>
-            <h1 className='cat-head'>Add A Category!</h1>
+            <h1 className='cat-head'>Step Three: Add A Category!</h1>
             <div className='cat-wrap'>
                 <button className='cat' onClick={this.clickHealth}> Health </button>
                 <button className='cat' onClick={this.clickPolitics}> Politics </button>
@@ -156,9 +149,21 @@ export class Input extends Component {
             </div>
          </div>     
          <button className='sumbitURL' onClick={this.submitHandler}>Submit!</button>
+            <Card 
+            url={this.state.link.url} 
+            category={this.state.link.category}
+            user_id={this.state.link.user_id}
+            is_read={this.state.link.is_read}
+            />
         </div>
     )
   }
 }
 
-export default Input;
+
+export default connect (
+    null,
+   { addLink }
+)(Input);
+
+// export default Input;

@@ -68,18 +68,31 @@ a.link-wrap.activeNavButton {
 
 /* SIGN IN & SIGN UP*/
 
+
 .form-wrap {
   padding: 100px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 95vh;
+}
+
+.form-wrap h1 {
+  margin: 30px;
+  font-size: 4rem;
+  color: #49A5FF;
 }
 
 .form-wrap form {
   height: 500px;
-  margin-top: 200px;
   border: 5px solid #edb948;
   width: 40%;
   border-radius: 5px;
+}
+
+.login {
+  margin-top: 130px;
 }
 
 .in {
@@ -190,12 +203,39 @@ button {
 
 /* ALL TAB */
 
+.all-page {
+  height: 95vh;
+}
+
 .wrap {
   display: flex;
   flex-wrap: wrap;
   padding-top: 140px;
+  justify-content: space-evenly;
 }
 
 .wrap a {
   margin: 20px;
+}
+
+.ui.card {
+  width: 30%;
+  margin: 0px 0px 30px 0px;
+  height: 480px;
+}
+
+/* FOOTER */
+
+.footer {
+  height: 50px;
+  background: #162e42;
+  color: #edb948;
+  font-size: 1.3rem;
+  display: flex;
+  /* align-content: center; */
+  justify-content: center;
+}
+
+.copy {
+  padding: 10px;
 }

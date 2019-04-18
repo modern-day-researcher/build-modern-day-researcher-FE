@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { checkSignIn } from '../actions';
+
 import { login } from '../actions';
 import '../App.css';
 
@@ -14,13 +14,6 @@ class LoginForm extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   this.props.checkSignIn();
-  // }
-
-  // signIn = () => {
-  //   this.props.history.push("/");
-  // };
 
   changeHandler = event => {
     event.preventDefault();
@@ -40,7 +33,7 @@ class LoginForm extends Component {
   render() {
     return (
       <div className="form-wrap">
-        <form onSubmit={this.submitDataHandler}>
+        <form className='login' onSubmit={this.submitDataHandler}>
           <div className="sign-header">
             <h3 className='cat-head'>Sign In</h3>
           </div>
@@ -78,5 +71,5 @@ class LoginForm extends Component {
 }
 export default connect(
   null,
-  { login, checkSignIn }
+  { login }
 )(LoginForm)
