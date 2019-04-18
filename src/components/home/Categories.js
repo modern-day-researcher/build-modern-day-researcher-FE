@@ -113,7 +113,7 @@ export class Input extends Component {
                     <label>Please enter a URL!</label>
                     <input
                         name='url'
-                        value={this.state.link.url}
+                        value={this.state.url}
                         placeholder='Add  A  URL . . .'
                         onChange={this.handleURLChange}
                         className='cat-input'
